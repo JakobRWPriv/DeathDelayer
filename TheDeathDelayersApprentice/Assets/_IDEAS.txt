@@ -1,0 +1,4 @@
+Man ska kunna dricka vatten som man ska vattna växter med
+Skjuta ned fåglar över kitteln med liten sten
+Attackera fiender med items
+MUN SKA HA SPRITE BONES OCH TÄNDERNA SKA VARA DERAS CHILDREN (ge tänderna parents, annars kan du inte scalea dem sen)
