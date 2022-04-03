@@ -16,6 +16,7 @@ public class LookAtMouse : MonoBehaviour
     public Transform objectToLookAtInstead;
     public bool shouldClamp;
     public float clampMin, clampMax;
+    public bool isWizardLook;
 
 	void Update () {
         mousePos = Input.mousePosition;
@@ -49,6 +50,9 @@ public class LookAtMouse : MonoBehaviour
             Quaternion dir = Quaternion.Euler(Vector3.forward * (objectAngle + objectOffset));
             angleToSet = Mathf.SmoothDampAngle(angleToSet, dir.eulerAngles.z, ref angleSmoothing, speed);
         } else {
+            if (isWizardLook) {
+                print("NULL :(");
+            }
             angleToSet = Mathf.SmoothDampAngle(angleToSet, angle, ref angleSmoothing, speed);
         }
 
@@ -74,6 +78,7 @@ public class LookAtMouse : MonoBehaviour
 
     public void ChangeTarget(Transform newTarget) {
         objectToLookAtInstead = newTarget;
+        print("change " + newTarget.name);
     }
 
     public void TargetMouse() {

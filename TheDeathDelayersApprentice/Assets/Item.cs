@@ -8,12 +8,15 @@ public class Item : MonoBehaviour
     public int itemIndex;
     public Rigidbody2D rb2d;
     public float forceMultiplier = 1;
-    bool isGrounded;
+    public bool hitCauldron;
+    public bool isGrounded;
     public bool canBePickedUp;
     public Collider2D groundTrigger;
     public float groundFriction;
     public Transform spriteTransform;
     public GameObject splashEffect;
+    public bool beingHeld;
+    public bool TESTOBJECT;
 
     Vector3 moveDirection;
     Vector3 mousePos;
@@ -34,7 +37,12 @@ public class Item : MonoBehaviour
     }
 
     void Update() {
-        isGrounded = (Physics2D.IsTouchingLayers(groundTrigger, 1 << LayerMask.NameToLayer("Ground")) && rb2d.velocity.y < 0.01f && rb2d.velocity.y > -0.01f);
+        if (!hitCauldron)
+            isGrounded = ((Physics2D.IsTouchingLayers(groundTrigger, 1 << LayerMask.NameToLayer("Ground")) && rb2d.velocity.y < 0.01f && rb2d.velocity.y > -0.01f) || beingHeld);
+
+        if (TESTOBJECT) {
+            if (isGrounded) print("GROUNDED");
+        }
 
         if (isGrounded) {
             rb2d.drag = groundFriction;
@@ -61,6 +69,8 @@ public class Item : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D otherCollider) {
         if (otherCollider.tag == "CauldronHit" && rb2d.velocity.y < 0) {
+            hitCauldron = true;
+            isGrounded = true;
             Instantiate(splashEffect, transform.position, Quaternion.identity);
             Destroy(parentTransform.gameObject);
         }

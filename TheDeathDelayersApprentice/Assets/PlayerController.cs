@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public Transform heldItemsTransform;
     public GameObject[] holdableItems;
     public GameObject activeHeldItemSprite;
+    public WizardScript wizard;
 
     public SpriteRenderer[] allSprites;
     public GameObject spritePos;
@@ -90,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
     private void PickUpItem(Item item) {
         activeHeldItem = item;
+        activeHeldItem.beingHeld = true;
         item.parentTransform.gameObject.SetActive(false);
         item.parentTransform.parent = heldItemsTransform;
         item.parentTransform.localPosition = Vector3.zero;
@@ -108,6 +110,11 @@ public class PlayerController : MonoBehaviour
             activeHeldItem.parentTransform.parent = null;
             activeHeldItem.parentTransform.gameObject.SetActive(true);
             activeHeldItem.forceMultiplier = aimingArrow.power;
+            activeHeldItem.beingHeld = false;
+            activeHeldItem.isGrounded = false;
+
+            wizard.LookAtItem(activeHeldItem.parentTransform.gameObject, activeHeldItem);
+
             activeHeldItem.GetShot();
             aimingArrow.gameObject.SetActive(false);
             activeHeldItemSprite.SetActive(false);
