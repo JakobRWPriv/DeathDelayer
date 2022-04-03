@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
+  - CauldronHit
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Player
   - Enemy
   - Item
-  - 
+  - ItemWall
   - 
   - 
   - 
@@ -41,6 +42,12 @@ TagManager:
   m_SortingLayers:
   - name: Wizard
     uniqueID: 512150871
+    locked: 0
+  - name: WizardHat
+    uniqueID: 4155020111
+    locked: 0
+  - name: Cauldron
+    uniqueID: 2645352305
     locked: 0
   - name: Default
     uniqueID: 0

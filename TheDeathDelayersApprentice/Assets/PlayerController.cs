@@ -225,8 +225,11 @@ public class PlayerController : MonoBehaviour
         }
 
         if (otherCollider.tag == "Item" && !isHoldingItem) { 
-            isHoldingItem = true;
-            PickUpItem(otherCollider.GetComponent<Item>());
+            Item itemToPickUp = otherCollider.GetComponent<Item>();
+            if (itemToPickUp.canBePickedUp) {
+                isHoldingItem = true;
+                PickUpItem(itemToPickUp);
+            }
         }
     }
 
@@ -240,8 +243,11 @@ public class PlayerController : MonoBehaviour
         }
 
         if (otherCollider.tag == "Item" && !isHoldingItem) { 
-            isHoldingItem = true;
-            PickUpItem(otherCollider.GetComponent<Item>());
+            Item itemToPickUp = otherCollider.GetComponent<Item>();
+            if (itemToPickUp.canBePickedUp) {
+                isHoldingItem = true;
+                PickUpItem(itemToPickUp);
+            }
         }
     }
 

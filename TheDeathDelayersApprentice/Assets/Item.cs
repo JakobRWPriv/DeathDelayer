@@ -13,6 +13,7 @@ public class Item : MonoBehaviour
     public Collider2D groundTrigger;
     public float groundFriction;
     public Transform spriteTransform;
+    public GameObject splashEffect;
 
     Vector3 moveDirection;
     Vector3 mousePos;
@@ -53,9 +54,15 @@ public class Item : MonoBehaviour
     }
 
     IEnumerator CanBePickedUpCo() {
-        print("HAYAYAYA");
         canBePickedUp = false;
         yield return new WaitForSeconds(0.5f);
         canBePickedUp = true;
+    }
+
+    void OnTriggerStay2D(Collider2D otherCollider) {
+        if (otherCollider.tag == "CauldronHit" && rb2d.velocity.y < 0) {
+            Instantiate(splashEffect, transform.position, Quaternion.identity);
+            Destroy(parentTransform.gameObject);
+        }
     }
 }
