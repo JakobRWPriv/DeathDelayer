@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LookAtMouse : MonoBehaviour
 {
+    public PlayerController player;
     Vector3 mousePos;
     Vector3 myWorldPos;
     Vector2 offset;
@@ -52,6 +53,7 @@ public class LookAtMouse : MonoBehaviour
         } else {
             if (isWizardLook) {
                 print("NULL :(");
+                objectToLookAtInstead = player.transform;
             }
             angleToSet = Mathf.SmoothDampAngle(angleToSet, angle, ref angleSmoothing, speed);
         }

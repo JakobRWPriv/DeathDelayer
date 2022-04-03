@@ -108,6 +108,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Mouse0) && holdingShot) {
             activeHeldItem.parentTransform.parent = null;
+            activeHeldItem.wizard = wizard;
             activeHeldItem.parentTransform.gameObject.SetActive(true);
             activeHeldItem.forceMultiplier = aimingArrow.power;
             activeHeldItem.beingHeld = false;

@@ -71,12 +71,16 @@
      <Compile Include="Assets\WizardScript.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
+     <Compile Include="Assets\GameHandler.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
      <Compile Include="Assets\LeanTween\Examples\Archived\OldGUIExamplesCS.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
      <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-     <Compile Include="Assets\GameHandler.cs" />
+     <Compile Include="Assets\CaterpillarScript.cs" />
+     <Compile Include="Assets\SetAnimatorSpeed.cs" />
+     <Compile Include="Assets\FlyScript.cs" />
+     <Compile Include="Assets\WizardEyeScript.cs" />
      <None Include="Assets\LeanTween\ReadMe.txt" />
      <None Include="Assets\_IDEAS.txt" />
      <None Include="Assets\LeanTween\License.txt" />
