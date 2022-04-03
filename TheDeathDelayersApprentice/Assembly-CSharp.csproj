@@ -68,6 +68,7 @@
      <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplinePerformance.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier2d.cs" />
+     <Compile Include="Assets\WizardScript.cs" />
      <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEasingTypes.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
@@ -75,7 +76,7 @@
      <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />
      <Compile Include="Assets\LeanTween\Examples\Archived\TestingRigidbodyCS.cs" />
      <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-     <Compile Include="Assets\WizardScript.cs" />
+     <Compile Include="Assets\GameHandler.cs" />
      <None Include="Assets\LeanTween\ReadMe.txt" />
      <None Include="Assets\_IDEAS.txt" />
      <None Include="Assets\LeanTween\License.txt" />

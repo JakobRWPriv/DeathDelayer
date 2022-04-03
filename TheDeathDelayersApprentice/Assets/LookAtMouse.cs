@@ -78,7 +78,6 @@ public class LookAtMouse : MonoBehaviour
 
     public void ChangeTarget(Transform newTarget) {
         objectToLookAtInstead = newTarget;
-        print("change " + newTarget.name);
     }
 
     public void TargetMouse() {

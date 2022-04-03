@@ -10,6 +10,11 @@ public class WizardScript : MonoBehaviour
     public Coroutine checkCoroutine;
     public Animator animator;
 
+    void Update() {
+        if (thrownItem == null && checkCoroutine != null) {
+            StopCoroutine(checkCoroutine);
+        }
+    }
 
     public void LookAtItem(GameObject go, Item item) {
         foreach(LookAtMouse lam in lookAtScripts) {
