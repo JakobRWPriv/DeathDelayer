@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public WizardScript wizard;
+    public GameHandler gameHandler;
     public Transform parentTransform;
     public int itemIndex;
     public Rigidbody2D rb2d;
@@ -23,7 +24,10 @@ public class Item : MonoBehaviour
     public bool rotateTo0WhenGrounded;
     public bool isRock;
     public bool isTear;
+    public bool isMushroom;
     public GameObject tearParticles;
+    public SpriteRenderer[] allSprites;
+    public bool shouldDisappear;
 
     Vector3 moveDirection;
     Vector3 mousePos;
@@ -35,7 +39,18 @@ public class Item : MonoBehaviour
         if (isTear) {
             LeanTween.scale(spriteTransform.gameObject, Vector3.one, 0.3f);
         }
+        if (isMushroom) {
+            LeanTween.scale(spriteTransform.gameObject, Vector3.one, 1f);
+            parentTransform.position = new Vector3(parentTransform.position.x + Random.Range(-1.5f, 1.5f), parentTransform.position.y, 0);
+        }
         StartCoroutine(CanBePickedUpCo());
+    }
+
+    void Start() {
+        allSprites = parentTransform.GetComponentsInChildren<SpriteRenderer>(true);
+        if (shouldDisappear) {
+            StartCoroutine(DisappearTimerCo());
+        }
     }
 
     void Update() {
@@ -50,7 +65,7 @@ public class Item : MonoBehaviour
             if (isGrounded) print("GROUNDED");
         }
 
-        if (isTear && isGrounded) {
+        if (isTear && isGrounded && !hitCauldron) {
             Instantiate(tearParticles, parentTransform.position, Quaternion.identity);
             Destroy(parentTransform.gameObject);
         }
@@ -104,7 +119,36 @@ public class Item : MonoBehaviour
             hitCauldron = true;
             isGrounded = true;
             Instantiate(splashEffect, transform.position, Quaternion.identity);
+            gameHandler.CheckForCorrectItem(this);
             Destroy(parentTransform.gameObject);
+        }
+    }
+
+    IEnumerator DisappearTimerCo() {
+        yield return new WaitForSeconds(7f);
+        isBlinking = true;
+        StartCoroutine(SpriteBlinkCo());
+        yield return new WaitForSeconds(3f);
+        Destroy(parentTransform.gameObject);
+    }
+
+    bool isBlinking;
+
+    public IEnumerator SpriteBlinkCo() {
+        foreach(SpriteRenderer sr in allSprites) {
+            sr.enabled = false;
+        }
+
+        yield return new WaitForSeconds(0.15f);
+
+        foreach(SpriteRenderer sr in allSprites) {
+            sr.enabled = true;
+        }
+
+        yield return new WaitForSeconds(0.15f);
+
+        if (isBlinking) {
+            StartCoroutine(SpriteBlinkCo());
         }
     }
 }

@@ -11,6 +11,26 @@ public class CaterpillarScript : MonoBehaviour
     public Transform scriptTransformObject;
     public Item itemScript;
 
+    public SetAnimatorSpeed setAnimatorSpeed;
+    public float minRandom, maxRandom;
+    public float startYPos;
+    public Collider2D myCollider;
+
+    void Start() {
+        float randomNum = Random.Range(minRandom, maxRandom);
+
+        startYPos = transform.position.y;
+
+        maxSpeed = -randomNum;
+        speedMultiplier = randomNum;
+        setAnimatorSpeed.animatorSpeed = randomNum;
+
+        if (transform.position.x < 0) {
+            scriptTransformObject.localScale = new Vector3(-1, 1, 1);
+            maxSpeed = -maxSpeed;
+        }
+    }
+
     void Update() {
         if (!itemScript.isGrounded) return;
 

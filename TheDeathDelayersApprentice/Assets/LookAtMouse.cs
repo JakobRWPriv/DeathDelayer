@@ -52,7 +52,6 @@ public class LookAtMouse : MonoBehaviour
             angleToSet = Mathf.SmoothDampAngle(angleToSet, dir.eulerAngles.z, ref angleSmoothing, speed);
         } else {
             if (isWizardLook) {
-                print("NULL :(");
                 objectToLookAtInstead = player.transform;
             }
             angleToSet = Mathf.SmoothDampAngle(angleToSet, angle, ref angleSmoothing, speed);

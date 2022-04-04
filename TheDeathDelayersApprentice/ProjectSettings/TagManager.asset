@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 2212946879
+    locked: 0
   - name: WizardBody
     uniqueID: 3094306459
     locked: 0
